@@ -20,7 +20,7 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        realm = try! Realm() // перед запуском экрана загружаем сохранненые записи
+        realm = try! Realm() // иницифлизируем реалм
     }
     
     //MARK: - Работа с таблицей
@@ -30,8 +30,8 @@ class MainViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let item = toDoList[indexPath.row] // получаем доступ к ячейке
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) // получаем доступ к ячейке
+        let item = toDoList[indexPath.row] // получаем доступ к записи по порядковому номеру
         cell.textLabel?.text = item.name // задаем текст в ячейке
         
         cell.accessoryType = item.done == true ? .checkmark : .none // устанавливаем чек-марку через тернарный оператор
